@@ -16,7 +16,7 @@
         <main class="container">
 
     		<h1>Der heiße Draht - Rangliste</h1>
-            <h2>Stand: <span class="jetzt"></span></h2>
+            <h2>Stand: <span class="jetzt"><!-- hier kommt Datum / Uhrzeit rein --></span></h2>
 
             <table>
                 <thead>
@@ -29,6 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- hier kommen die Ergebnisse rein -->
                 </tbody>
             </table>
 
@@ -36,12 +37,16 @@
 
         <script src="/static/jquery-3.2.1.min.js"></script>
         <script>
+        // Alle 5s
         setInterval(function () {
+            // Hole die Ergebnisse
             $.get('/scores', function (data) {
                 var zeilen = '';
 
+                // Aktualisiere Uhrzeit
                 $('.jetzt').text(data.jetzt);
 
+                // Sammle Zeilen mit Ergebnissen
                 data.scores.forEach(function (score) {
                     zeilen += '<tr><td>' +
                         score.rang + '</td><td>' +
@@ -50,6 +55,8 @@
                         score.zeit + '</td><td>' +
                         score.beruehrt + '</td></tr>';
                 });
+
+                // ... und füge sie in die Tabelle ein
                 $('tbody').html(zeilen);
             });
         }, 5000);
