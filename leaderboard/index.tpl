@@ -38,16 +38,19 @@
         <script>
         setInterval(function () {
             $.get('/scores', function (data) {
+                var zeilen = '';
+
                 $('.jetzt').text(data.jetzt);
+
                 data.scores.forEach(function (score) {
-                    $('tbody').html('<tr><td>' +
+                    zeilen += '<tr><td>' +
                         score.rang + '</td><td>' +
                         data.namen[score.id] + '</td><td>' +
                         score.anzahl + '</td><td>' +
                         score.zeit + '</td><td>' +
-                        score.beruehrt + '</td></tr>'
-                    );
+                        score.beruehrt + '</td></tr>';
                 });
+                $('tbody').html(zeilen);
             });
         }, 5000);
         </script>
