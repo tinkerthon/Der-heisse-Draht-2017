@@ -20,6 +20,7 @@
         </main>
 
         <footer class="container">
+			<a href="/">Rangliste</a> |
             <a href="/names">Namen</a> |
             <a href="https://github.com/tinkerthon/Der-heisse-Draht-2017/tree/master/leaderboard">Github</a>
         </footer>

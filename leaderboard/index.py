@@ -7,15 +7,19 @@ plugin = sqlite.Plugin(dbfile='./scores.sqlite3')
 app.install(plugin)
 
 def get_names(db):
+    """Hole die Teilnehmerliste aus der Datenbank
+       und gib sie als Dictionary zurück"""
     names_list = db.execute('SELECT * FROM names ORDER BY id').fetchall()
     return {id: name for (id, name) in names_list}
 
 @app.route('/')
 def index():
+    """Zeige die Rangliste"""
     return bottle.template('./index.tpl')
 
 @app.route('/scores')
 def scores(db):
+    """API-Endpunkt: Liefere die Daten der Rangliste im JSON-Format"""
     scores = db.execute('SELECT * FROM scores ORDER BY rang').fetchall()
     return dict(
         names = get_names(db),
@@ -25,11 +29,13 @@ def scores(db):
 
 @app.route('/names')
 def names(db):
+    """Zeige die Namensliste"""
     names = get_names(db)
     return bottle.template('./names.tpl', names=names)
 
 @app.route('/names', method='POST')
 def save_names(db):
+    """Speichere die Namensliste in der Datenbank"""
     for id in range(1, 16):
         name = bottle.request.forms.get('names.' + str(id))
         db.execute('REPLACE INTO names (id, name) VALUES (?, ?)', [id, name])
@@ -37,6 +43,7 @@ def save_names(db):
 
 @app.route('/static/<filename>')
 def server_static(filename):
+    """Liefere statische Dateien (Bilder, Stylesheets)"""
     return bottle.static_file(filename, root='./static')
 
 if __name__ == '__main__':
