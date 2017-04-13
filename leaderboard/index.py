@@ -10,7 +10,7 @@ def get_names(db):
     """Hole die Teilnehmerliste aus der Datenbank
        und gib sie als Dictionary zurück"""
     names_list = db.execute('SELECT * FROM names ORDER BY id').fetchall()
-    return {id: name for (id, name) in names_list}
+    return {id: name if name != '' else '#' + str(id) for (id, name) in names_list}
 
 @app.route('/')
 def index():
@@ -20,7 +20,7 @@ def index():
 @app.route('/scores')
 def scores(db):
     """API-Endpunkt: Liefere die Daten der Rangliste im JSON-Format"""
-    scores = db.execute('SELECT * FROM scores ORDER BY rang').fetchall()
+    scores = sorted(db.execute('SELECT * FROM scores').fetchall(), key=lambda score: score['punkte'] / score['anzahl'])
     return dict(
         names = get_names(db),
         scores = [dict(score) for score in scores],

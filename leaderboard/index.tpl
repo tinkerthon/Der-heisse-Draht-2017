@@ -9,8 +9,9 @@
             <th>Position</th>
             <th>Spieler</th>
             <th>Anzahl</th>
-            <th>Zeit</th>
-            <th>Berührungen</th>
+            <th>∅ Zeit</th>
+            <th>∅ Berührungen</th>
+            <th>∅ Punkte</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,13 @@
 
 <script src="/static/jquery-3.2.1.min.js"></script>
 <script>
+function round2(number) {
+    var factor = 100,
+        n100 = number * factor,
+        rounded = Math.round(n100);
+    return rounded / factor;
+};
+
 // Alle 5s
 setInterval(function () {
     // Hole die Ergebnisse
@@ -30,13 +38,14 @@ setInterval(function () {
         $('.now').text(data.now);
 
         // Sammle Zeilen mit Ergebnissen
-        data.scores.forEach(function (score) {
+        data.scores.forEach(function (score, i) {
             lines += '<tr><td>' +
-                score.rang + '</td><td>' +
+                (i+1) + '</td><td>' +
                 data.names[score.id] + '</td><td>' +
                 score.anzahl + '</td><td>' +
-                score.zeit + '</td><td>' +
-                score.beruehrt + '</td></tr>';
+                Math.round(score.zeit / score.anzahl) + '</td><td>' +
+                Math.round(score.beruehrt / score.anzahl) + '</td><td>' +
+                round2(score.punkte / score.anzahl) + '</td></tr>';
         });
 
         // ... und füge sie in die Tabelle ein

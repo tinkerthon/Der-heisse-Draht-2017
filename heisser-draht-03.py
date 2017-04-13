@@ -1,4 +1,5 @@
 # heisser-draht-03.py
+
 from microbit import *
 import music
 
@@ -24,7 +25,7 @@ while True:
     if button_b.was_pressed():
         music.play(music.POWER_DOWN)
         display.scroll(
-            str(beruehrt) + ':' + 
+            str(beruehrt) + ':' +
             str(jetzt - start) + '=' +
             str(jetzt - start + beruehrt * 5)
         )
