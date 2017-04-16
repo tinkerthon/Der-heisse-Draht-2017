@@ -41,6 +41,11 @@ def save_names(db):
         db.execute('REPLACE INTO names (id, name) VALUES (?, ?)', [id, name])
     bottle.redirect('/names')
 
+@app.route('/del/<id>', method='POST')
+def del_score(db, id):
+    """Lösche einen Score-Eintrag"""
+    db.execute('DELETE FROM scores WHERE id = ?', [id])
+
 @app.route('/static/<filename>')
 def server_static(filename):
     """Liefere statische Dateien (Bilder, Stylesheets)"""
