@@ -2,7 +2,7 @@ import bottle
 from bottle.ext import sqlite
 from datetime import datetime
 
-app = bottle.Bottle()
+app = application = bottle.Bottle()
 plugin = sqlite.Plugin(dbfile='./scores.sqlite3')
 app.install(plugin)
 
@@ -41,10 +41,30 @@ def save_names(db):
         db.execute('REPLACE INTO names (id, name) VALUES (?, ?)', [id, name])
     bottle.redirect('/names')
 
+@app.route('/del/<id>', method='POST')
+def del_score(db, id):
+    """Lösche einen Score-Eintrag"""
+    db.execute('DELETE FROM scores WHERE id = ?', [id])
+
 @app.route('/static/<filename>')
 def server_static(filename):
     """Liefere statische Dateien (Bilder, Stylesheets)"""
     return bottle.static_file(filename, root='./static')
 
+class StripPathMiddleware(object):
+    """Get that slash out of the request"""
+
+    def __init__(self, a):
+        self.a = a
+
+    def __call__(self, e, h):
+        e['PATH_INFO'] = e['PATH_INFO'].rstrip('/')
+        return self.a(e, h)
+
 if __name__ == '__main__':
-    app.run(host='localhost', port=8888, debug=True, reloader=True)
+    bottle.run(app=StripPathMiddleware(app),
+        host='0.0.0.0',
+        port=8888,
+        debug=True,
+        reloader=True
+    )
