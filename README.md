@@ -21,3 +21,7 @@ Die Web-Anwendung in `leaderboard` stellt die Spielergebnisse als Rangliste dar.
 ## Workshop-Konzept verfügbar
 
 Zum Workshop gibt es ein umfassendes Konzept. Bei Interesse bitte [Nachricht an mich](https://tinkerthon.de/impressum/).
+
+## Weitere Links zum Micro:bit
+
+* [Darryl Sloan](https://www.youtube.com/watch?v=YooBM1gOMuo) demonstriert ein "Alien"-Spiel, geschrieben in MicroPython. Er schreibt ein [Buch mit Programmieranleitungen](https://www.facebook.com/microgamesbook/) zu weiteren Spielen
