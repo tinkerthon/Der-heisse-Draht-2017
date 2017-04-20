@@ -18,10 +18,12 @@ Das Programm `log.py` läuft auf einem weiteren Micro:bit und empfängt die Spie
 
 Die Web-Anwendung in `leaderboard` stellt die Spielergebnisse als Rangliste dar. Hierüber können auch die Teilnehmernamen in der Datenbank zur Anzeige gepflegt werden.
 
-## Workshop-Konzept verfügbar
+## Workshop-Konzept
 
-Zum Workshop gibt es ein umfassendes Konzept. Bei Interesse bitte [Nachricht an mich](https://tinkerthon.de/impressum/).
+Zum Workshop gibt es ein [umfassendes Konzept](workshop-konzept.pdf).
 
-## Weitere Links zum Micro:bit
+## Weitere Links zum Micro:bit mit MicroPython
 
 * [Darryl Sloan](https://www.youtube.com/watch?v=YooBM1gOMuo) demonstriert ein "Alien"-Spiel, geschrieben in MicroPython. Er schreibt ein [Buch mit Programmieranleitungen](https://www.facebook.com/microgamesbook/) zu weiteren Spielen
+* [David Whale](https://twitter.com/whaleygeek) hat einige Spiele und viele [weitere Spielideen](https://github.com/whaleygeek/microbit_python/blob/master/game_ideas.txt) in [seinem Github-Repo](https://github.com/whaleygeek/microbit_python).
+* [Pete Dring](https://plus.google.com/+pddring) hat einen Micro:bit [MicroPython-Simulator](https://create.withcode.uk/) und viele Spiele-Anleitungen, u.a. [Doodle Jump](http://blog.withcode.uk/2016/06/doodle-jump-microbit-python-game-tutorial/)
