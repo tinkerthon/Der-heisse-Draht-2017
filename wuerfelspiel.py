@@ -1,5 +1,6 @@
 from microbit import *
 import music
+import random
 
 gesuchte_zahl = 1
 
@@ -11,8 +12,7 @@ while True:
         
     display.show(str(gesuchte_zahl))
  
-    gesture = accelerometer.current_gesture()
-    if gesture == "shake":
+    if button_b.was_pressed():
         zahl = random.randint(1, 8)
 
         display.show(str(zahl))
@@ -21,7 +21,7 @@ while True:
         if gesuchte_zahl == zahl:
             display.show(Image.HAPPY)
             music.play(music.POWER_UP)
-        elif gesucht_zahl % 2 == zahl % 2:
+        elif gesuchte_zahl % 2 == zahl % 2:
             display.show(Image.YES)
             music.play(music.JUMP_UP)
         else:
