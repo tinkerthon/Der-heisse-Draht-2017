@@ -13,7 +13,7 @@ def welche_anzeige():
             welche = False
             break
 
-    display.show("Z" if zeige_zahl else "B")
+    display.show("Z" if welche else "B")
 
     return welche
 
@@ -30,7 +30,7 @@ bilder = [
 zeige_zahl = welche_anzeige()
 
 while True:
-    if microbit.button_a.is_pressed() and microbit.button_b.is_pressed():
+    if button_a.is_pressed() and button_b.is_pressed():
         zeige_zahl = welche_anzeige()
 
     gesture = accelerometer.current_gesture()
