@@ -22,14 +22,14 @@ def save_score(new_score):
         anzahl = score['anzahl'] + 1
         beruehrt = score['beruehrt'] + int(new_score[1])
         zeit = score['zeit'] + int(new_score[2])
-        punkte = score['punkte'] + int(new_score[3])
+        punkte = score['punkte'] + int(new_score[1]) * 5 + int(new_score[2])
 
         db.execute('UPDATE scores SET anzahl=?, beruehrt=?, zeit=?, punkte=? WHERE id=?', [anzahl, beruehrt, zeit, punkte, id])
     else:
         anzahl = 1
         beruehrt = new_score[1]
         zeit = new_score[2]
-        punkte = new_score[3]
+        punkte = int(new_score[1]) * 5 + int(new_score[2]) 
 
         db.execute('INSERT INTO scores (id, anzahl, beruehrt, zeit, punkte) VALUES (?,?,?,?,?)', [id, anzahl, beruehrt, zeit, punkte])
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     ser.open()
 
     while True:
-        # Felder: User-ID, Anz. Berührungen, Zeit, Punkte
-        score = ser.readline().decode().strip().split(':')
+        # Felder: User-ID, Anz. Ber�hrungen, Zeit, Punkte
+        score = ser.readline().decode().strip().split(';')
         print("Score:", score)
         save_score(score)
