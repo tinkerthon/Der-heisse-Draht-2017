@@ -49,6 +49,7 @@ while True:
 
     if jetzt > 0 and button_b.was_pressed():
         ergebnis = str(id) + ':' + str(beruehrt) + ':' + str(jetzt - start) + ':' + str(jetzt - start + beruehrt * 5)
+        print(ergebnis)
 
         radio.send(ergebnis)
 
