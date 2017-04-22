@@ -8,10 +8,7 @@
 from microbit import *
 from random import randint
 
-class Bat:
-    x
-    y
-    
+class Bat:  
     def __init__(self):
         self.y = 2
     
@@ -28,9 +25,6 @@ class Bat:
 
 
 class Ball:
-    x
-    y
-    current_trail
     trails = [
         [2, 2, 1, 1, 0],
         [2, 2, 1, 1, 1],
@@ -48,10 +42,6 @@ class Ball:
 
 
 class Game:
-    ball
-    bat
-    round
-    
     def __init__(self):
         self.ball = Ball()
         self.bat = Bat()
