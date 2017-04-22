@@ -68,6 +68,7 @@ class Game:
             self.action()
 
         if self.ball.y != self.bat.y:
+            # nicht getroffen. Game over
             return False
 
         # ... und zurueck
@@ -75,6 +76,9 @@ class Game:
             self.action()
 
         self.round += 1
+        
+        # naechste Runde
+        return True
         
         
     def over(self):
