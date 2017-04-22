@@ -23,11 +23,14 @@ trails = [
 ]
 
 
-class bat:
+class Bat:
     x
     y
     
-    def run():
+    def __init__(self):
+        self.y = 2
+    
+    def run(self):
         '''
         Schlaeger: Check und anzeigen
         '''
@@ -39,11 +42,11 @@ class bat:
         display.set_pixel(4, self.y, 9)
 
 
-class ball:
+class Ball:
     x
     y
 
-    def run():
+    def run(self):
         '''
         Ball: Aktuelles Y ermitteln und anzeigen
         '''
@@ -51,50 +54,60 @@ class ball:
         display.set_pixel(self.x, self.y, 9)
 
 
-class game:
+class Game:
     ball
     bat
+    round
+    current_trail
     
-    def __init__():
-        
+    def __init__(self):
+        self.ball = Ball()
+        self.bat = Bat()
+        self.round = 0
+        self.current_trail = 2
+
     
-    def action():
+    def action(self):
         '''
         Innere Spielschleife: Ball, Schlaeger, kurze Pause
         '''
         display.clear()
 
-        ball.run()
-        bat.run()
+        self.ball.run()
+        self.bat.run()
         sleep(200)
+
+    
+    def round(self):
+        self.current_trail = randint(0, 4)
+
+        # Ball hin
+        for self.ball.x in range(5):
+            self.action()
+
+        if self.ball.y != bat.y:
+            return False
+
+        # ... und zurueck
+        for self.ball.x in range(4, -1, -1):
+            self.action()
+
+        self.round += 1
+        
+        
+    def over(self):
+        # Ball nicht getroffen: Runde zuende
+        while not (button_a.was_pressed() and button_b.was_pressed()):
+            display.show(Image.SKULL)
+            sleep(200)
+            display.show(str(self.round))
 
 
 # Aeussere Schleife: Gesamtes Spiel
 while True:
+    game = Game()
 
-    # Innere Schleife: Ball einmal hin und zurueck
-    while True:
-        current_trail = randint(0, 4)
-
-        # Ball hin
-        for ball_x in range(5):
-            action()
-
-        if ball_y != bat_y:
-            break
-
-        # ... und zurueck
-        for ball_x in range(4, -1, -1):
-            action()
-
-        round += 1
-
-    # Ball nicht getroffen: Runde zuende
-    while not (button_a.was_pressed() and button_b.was_pressed()):
-        display.show(Image.SKULL)
-        sleep(200)
-        display.show(str(round))
-
-    # Neue Runde
-    round = 0
-    bat_y = 2
+    while game.round():
+        pass
+        
+    game.over()
