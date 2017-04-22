@@ -12,6 +12,7 @@ bat_y = 0
 ball_y = 2
 ball_x = 0
 current_trail = 2
+round = 0
 
 trails = [
     [2, 2, 1, 1, 0],
@@ -39,28 +40,35 @@ def ball(x, y):
     display.set_pixel(x, y, 9)
 
 
+def action():
+    display.clear()
+
+    ball(ball_x, ball_y)
+    bat()
+    sleep(200)
+    
+
 while True:
     while True:
         current_trail = randint(0, 4)
 
         for ball_x in range(5):
-            display.clear()
-
-            ball(ball_x, ball_y)
-            bat()
-            sleep(200)
+            action()
 
         ball_y = trails[current_trail][ball_x]
         if ball_y not in [bat_y, bat_y + 1]:
             break
 
-        current_trail = 4 - current_trail
+        for ball_x in range(4, -1, -1):
+            action()
 
-        for ball_x in range(4, 0, -1):
-            display.clear()
+        round += 1
 
-            ball(ball_x, ball_y)
-            bat()
-            sleep(200)
 
-    display.show(Image.SKULL)
+    while not (button_a.was_pressed() and button_b.was_pressed()):
+        display.show(Image.SKULL)
+        sleep(200)
+        
+        round = 0
+        bat_y = 2
+        ball_y = 2
