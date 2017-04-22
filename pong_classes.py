@@ -80,7 +80,7 @@ class Game:
     def over(self):
         # Ball nicht getroffen: Runde zuende
         while not (button_a.was_pressed() and button_b.was_pressed()):
-            display.show(Image.Skull)
+            display.show(Image.SKULL)
             sleep(200)
             display.show(str(self.round))
 
