@@ -56,12 +56,12 @@ def action():
     ball()
     bat()
     sleep(200)
-    
+
 
 # Aeussere Schleife: Gesamtes Spiel
 while True:
-    
-    # Innere Schleife: Ball einmal hin und zurueck 
+
+    # Innere Schleife: Ball einmal hin und zurueck
     while True:
         current_trail = randint(0, 4)
 
@@ -78,13 +78,12 @@ while True:
 
         round += 1
 
-
     # Ball nicht getroffen: Runde zuende
     while not (button_a.was_pressed() and button_b.was_pressed()):
         display.show(Image.SKULL)
         sleep(200)
         display.show(str(round))
-    
+
     # Neue Runde
     round = 0
     bat_y = 2
