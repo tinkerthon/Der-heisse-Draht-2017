@@ -40,6 +40,7 @@ def bat():
 def ball():
     '''
     Ball: Aktuelles Y ermitteln und anzeigen
+    '''
     global ball_y
 
     ball_y = trails[current_trail][ball_x]
@@ -47,6 +48,9 @@ def ball():
 
 
 def action():
+    '''
+    Innere Spielschleife: Ball, Schlaeger, kurze Pause
+    '''
     display.clear()
 
     ball()
