@@ -87,6 +87,7 @@ class Game:
             display.show(Image.SKULL)
             sleep(200)
             display.show(str(self.round))
+            sleep(1000)
 
 
 # Zeige 'Pg' (fuer "Pong") und warte auf Tasten A+B
