@@ -22,7 +22,7 @@ trails = [
 ]
 
 
-def schlaeger():
+def bat():
 
     global bat_y
 
@@ -40,26 +40,27 @@ def ball(x, y):
 
 
 while True:
-    current_trail = randint(0, 4)
+    while True:
+        current_trail = randint(0, 4)
 
-    for ball_x in range(5):
-        display.clear()
+        for ball_x in range(5):
+            display.clear()
 
-        ball(ball_x, ball_y)
-        schlaeger()
-        sleep(200)
+            ball(ball_x, ball_y)
+            bat()
+            sleep(200)
 
-    ball_y = trails[current_trail][ball_x]
-    if ball_y not in [bat_y, bat_y + 1]:
-        break
+        ball_y = trails[current_trail][ball_x]
+        if ball_y not in [bat_y, bat_y + 1]:
+            break
 
-    current_trail = 4 - current_trail
+        current_trail = 4 - current_trail
 
-    for ball_x in range(4, 0, -1):
-        display.clear()
+        for ball_x in range(4, 0, -1):
+            display.clear()
 
-        ball(ball_x, ball_y)
-        schlaeger()
-        sleep(200)
+            ball(ball_x, ball_y)
+            bat()
+            sleep(200)
 
-display.show(Image.SKULL)
+    display.show(Image.SKULL)
