@@ -6,6 +6,7 @@
 #
 
 from microbit import *
+import music
 from random import randint
 
 class Bat:
@@ -61,6 +62,7 @@ class Game:
         self.ball = Ball()
         self.bat = Bat()
         self.round = 0
+        music.play(music.POWER_UP)
 
     
     def action(self):
@@ -68,6 +70,7 @@ class Game:
         Innere Spielschleife: Ball, Schlaeger, kurze Pause
         '''
         display.clear()
+        music.pitch(440, 6)
 
         self.ball.run()
         self.bat.run()
@@ -92,6 +95,9 @@ class Game:
         if self.ball.y != self.bat.y:
             # nicht getroffen. Game over
             return False
+        else:
+            music.pitch(880, 12)
+
 
         # ... und zurueck
         for self.ball.x in range(4, -1, -1):
@@ -107,6 +113,7 @@ class Game:
         '''
         Ball nicht getroffen: Runde zuende
         '''
+        music.play(music.JUMP_DOWN)
         while not (button_a.was_pressed() and button_b.was_pressed()):
             display.show(Image.SKULL)
             sleep(200)
