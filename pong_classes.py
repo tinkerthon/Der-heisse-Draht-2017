@@ -45,12 +45,13 @@ class Bat:
 class Ball:
     x
     y
-
+    current_trail
+    
     def run(self):
         '''
         Ball: Aktuelles Y ermitteln und anzeigen
         '''
-        self.y = trails[current_trail][self.x]
+        self.y = trails[self.current_trail][self.x]
         display.set_pixel(self.x, self.y, 9)
 
 
@@ -58,13 +59,11 @@ class Game:
     ball
     bat
     round
-    current_trail
     
     def __init__(self):
         self.ball = Ball()
         self.bat = Bat()
         self.round = 0
-        self.current_trail = 2
 
     
     def action(self):
@@ -79,13 +78,13 @@ class Game:
 
     
     def round(self):
-        self.current_trail = randint(0, 4)
+        self.ball.current_trail = randint(0, 4)
 
         # Ball hin
         for self.ball.x in range(5):
             self.action()
 
-        if self.ball.y != bat.y:
+        if self.ball.y != self.bat.y:
             return False
 
         # ... und zurueck
