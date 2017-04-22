@@ -8,7 +8,11 @@
 from microbit import *
 from random import randint
 
-class Bat:  
+class Bat:
+    '''
+    Der Schlaeger
+    '''
+    
     def __init__(self):
         self.y = 2
     
@@ -25,6 +29,10 @@ class Bat:
 
 
 class Ball:
+    '''
+    Der Ball
+    '''
+    
     trails = [
         [2, 2, 1, 1, 0],
         [2, 2, 1, 1, 1],
@@ -42,7 +50,14 @@ class Ball:
 
 
 class Game:
+    '''
+    Das Spiel
+    '''
+    
     def __init__(self):
+        '''
+        Neues Spiel
+        '''
         self.ball = Ball()
         self.bat = Bat()
         self.round = 0
@@ -61,6 +76,13 @@ class Game:
 
     
     def run(self):
+        '''
+        Eine Runde
+        - Zufaellige Flugbahn
+        - Ball hin
+        - Check, ob getroffen
+        - Ball zurueck
+        '''
         self.ball.current_trail = randint(0, 4)
 
         # Ball hin
@@ -82,23 +104,32 @@ class Game:
         
         
     def over(self):
-        # Ball nicht getroffen: Runde zuende
+        '''
+        Ball nicht getroffen: Runde zuende
+        '''
         while not (button_a.was_pressed() and button_b.was_pressed()):
             display.show(Image.SKULL)
             sleep(200)
             display.show(str(self.round))
             sleep(1000)
 
+#
+#-----------------------------------------------------------------
+#
 
 # Zeige 'Pg' (fuer "Pong") und warte auf Tasten A+B
 display.show(Image('99099:90909:99099:90009:90099'))
 while not (button_a.was_pressed() and button_b.was_pressed()):
     pass
 
-# Aeussere Schleife: Gesamtes Spiel
+# Aessere Spielschleife: 
+# - Neues Spiel
+# - solange Runden, bis game.run() False zurueck liefert: Ball nicht getroffen
+# - Game over: Anzeige der Rundenzahl
 while True:
     game = Game()
 
+    # Innere Spielschleife: Je eine Runde
     while game.run():
         pass
         
