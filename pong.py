@@ -1,3 +1,10 @@
+#
+# Spiele Pong.
+# Steuerung: Knopf A (unten), Knopf A (oben)
+# Neustart: Knoepfe A+B gleichzeitig
+# (c) Olav Schettler @oschettler
+#
+
 from microbit import *
 from random import randint
 
@@ -19,9 +26,9 @@ def schlaeger():
 
     global bat_y
 
-    if bat_y > 0 and button_a.was_pressed():
+    if bat_y > 0 and button_b.was_pressed():
         bat_y -= 1
-    elif bat_y < 3 and button_b.was_pressed():
+    elif bat_y < 3 and button_a.was_pressed():
         bat_y += 1
 
     display.set_pixel(4, bat_y, 9)
