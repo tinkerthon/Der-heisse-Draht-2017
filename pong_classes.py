@@ -56,10 +56,11 @@ class Game:
 
         self.ball.run()
         self.bat.run()
-        sleep(200)
+        print("Round:", self.round, "Ball:", self.ball.y, "Bat:", self.bat.y)
+        sleep(300)
 
     
-    def round(self):
+    def run(self):
         self.ball.current_trail = randint(0, 4)
 
         # Ball hin
@@ -79,16 +80,21 @@ class Game:
     def over(self):
         # Ball nicht getroffen: Runde zuende
         while not (button_a.was_pressed() and button_b.was_pressed()):
-            display.show(Image.SKULL)
+            display.show(Image.Skull)
             sleep(200)
             display.show(str(self.round))
 
+
+# Zeige 'Pg' (fuer "Pong") und warte auf Tasten A+B
+display.show(Image('99099:90909:99099:90009:90099'))
+while not (button_a.was_pressed() and button_b.was_pressed()):
+    pass
 
 # Aeussere Schleife: Gesamtes Spiel
 while True:
     game = Game()
 
-    while game.round():
+    while game.run():
         pass
         
     game.over()
