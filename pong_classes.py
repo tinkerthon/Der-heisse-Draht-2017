@@ -8,21 +8,6 @@
 from microbit import *
 from random import randint
 
-bat_y = 0
-ball_y = 2
-ball_x = 0
-current_trail = 2
-round = 0
-
-trails = [
-    [2, 2, 1, 1, 0],
-    [2, 2, 1, 1, 1],
-    [2, 2, 2, 2, 2],
-    [2, 2, 3, 3, 3],
-    [2, 2, 3, 3, 4]
-]
-
-
 class Bat:
     x
     y
@@ -46,12 +31,19 @@ class Ball:
     x
     y
     current_trail
+    trails = [
+        [2, 2, 1, 1, 0],
+        [2, 2, 1, 1, 1],
+        [2, 2, 2, 2, 2],
+        [2, 2, 3, 3, 3],
+        [2, 2, 3, 3, 4]
+    ]
     
     def run(self):
         '''
         Ball: Aktuelles Y ermitteln und anzeigen
         '''
-        self.y = trails[self.current_trail][self.x]
+        self.y = self.trails[self.current_trail][self.x]
         display.set_pixel(self.x, self.y, 9)
 
 
