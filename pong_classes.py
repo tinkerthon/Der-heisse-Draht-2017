@@ -23,39 +23,50 @@ trails = [
 ]
 
 
-def bat():
-    '''
-    Schlaeger: Check und anzeigen
-    '''
-    global bat_y
+class bat:
+    x
+    y
+    
+    def run():
+        '''
+        Schlaeger: Check und anzeigen
+        '''
+        if self.y > 0 and button_b.was_pressed():
+            self.y -= 1
+        elif self.y < 3 and button_a.was_pressed():
+            self.y += 1
 
-    if bat_y > 0 and button_b.was_pressed():
-        bat_y -= 1
-    elif bat_y < 3 and button_a.was_pressed():
-        bat_y += 1
-
-    display.set_pixel(4, bat_y, 9)
-
-
-def ball():
-    '''
-    Ball: Aktuelles Y ermitteln und anzeigen
-    '''
-    global ball_y
-
-    ball_y = trails[current_trail][ball_x]
-    display.set_pixel(ball_x, ball_y, 9)
+        display.set_pixel(4, self.y, 9)
 
 
-def action():
-    '''
-    Innere Spielschleife: Ball, Schlaeger, kurze Pause
-    '''
-    display.clear()
+class ball:
+    x
+    y
 
-    ball()
-    bat()
-    sleep(200)
+    def run():
+        '''
+        Ball: Aktuelles Y ermitteln und anzeigen
+        '''
+        self.y = trails[current_trail][self.x]
+        display.set_pixel(self.x, self.y, 9)
+
+
+class game:
+    ball
+    bat
+    
+    def __init__():
+        
+    
+    def action():
+        '''
+        Innere Spielschleife: Ball, Schlaeger, kurze Pause
+        '''
+        display.clear()
+
+        ball.run()
+        bat.run()
+        sleep(200)
 
 
 # Aeussere Schleife: Gesamtes Spiel
