@@ -24,7 +24,6 @@ trails = [
 
 
 def bat():
-
     global bat_y
 
     if bat_y > 0 and button_b.was_pressed():
@@ -33,17 +32,19 @@ def bat():
         bat_y += 1
 
     display.set_pixel(4, bat_y, 9)
-    display.set_pixel(4, bat_y + 1, 9)
 
 
-def ball(x, y):
-    display.set_pixel(x, y, 9)
+def ball():
+    global ball_y
+
+    ball_y = trails[current_trail][ball_x]
+    display.set_pixel(ball_x, ball_y, 9)
 
 
 def action():
     display.clear()
 
-    ball(ball_x, ball_y)
+    ball()
     bat()
     sleep(200)
     
@@ -55,8 +56,7 @@ while True:
         for ball_x in range(5):
             action()
 
-        ball_y = trails[current_trail][ball_x]
-        if ball_y not in [bat_y, bat_y + 1]:
+        if ball_y != bat_y:
             break
 
         for ball_x in range(4, -1, -1):
@@ -68,7 +68,8 @@ while True:
     while not (button_a.was_pressed() and button_b.was_pressed()):
         display.show(Image.SKULL)
         sleep(200)
+        display.show(str(round))
         
-        round = 0
-        bat_y = 2
-        ball_y = 2
+    round = 0
+    bat_y = 2
+    ball_y = 2
