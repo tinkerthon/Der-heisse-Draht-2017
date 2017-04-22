@@ -24,6 +24,9 @@ trails = [
 
 
 def bat():
+    '''
+    Schlaeger: Check und anzeigen
+    '''
     global bat_y
 
     if bat_y > 0 and button_b.was_pressed():
@@ -35,6 +38,8 @@ def bat():
 
 
 def ball():
+    '''
+    Ball: Aktuelles Y ermitteln und anzeigen
     global ball_y
 
     ball_y = trails[current_trail][ball_x]
