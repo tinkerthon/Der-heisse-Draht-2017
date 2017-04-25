@@ -1,6 +1,6 @@
 # Der heiße Draht 2017
 
-Materialien zum Physical Computing Workshop 2017 im Deutschen Museum in Bonn.
+Materialien zum [Physical Computing Workshop 2017](http://www.deutsches-museum.de/bonn/information/fuer-kinder-und-schulen/die-kleine-eule-pfiffikus/workshops/der-heisse-draht/) im Deutschen Museum in Bonn.
 
 ## Entwicklungsstufen des MicroPython-Programmes für den Micro:bit
 
