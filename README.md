@@ -1,5 +1,7 @@
 # Der heiße Draht 2017
 
+![Open Educational Resource](http://www.unesco.org/webworld/download/oer/EN/oer_logo_EN_2.png)
+
 Materialien zum [Physical Computing Workshop 2017](http://www.deutsches-museum.de/bonn/information/fuer-kinder-und-schulen/die-kleine-eule-pfiffikus/workshops/der-heisse-draht/) im Deutschen Museum in Bonn.
 
 ## Entwicklungsstufen des MicroPython-Programmes für den Micro:bit
@@ -20,7 +22,7 @@ Die Web-Anwendung in `leaderboard` stellt die Spielergebnisse als Rangliste dar.
 
 ## Workshop-Konzept
 
-Zum Workshop gibt es ein [umfassendes Konzept](workshop-konzept.pdf).
+Zum Workshop gibt es ein [umfassendes Konzept](workshop-konzept.pdf). Das Konzept steht unter der der Lizenz [Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) und kann gerne für eigene Veranstaltungen genutzt werden. Ich freue mich natürlich über [Änderungs- oder Verbesserungsvorschläge](https://olav.net/contact). 
 
 ## Weitere Links zum Micro:bit mit MicroPython
 
