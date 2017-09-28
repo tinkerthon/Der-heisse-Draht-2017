@@ -2,7 +2,7 @@
 
 ![Open Educational Resource](http://www.unesco.org/webworld/download/oer/EN/oer_logo_EN_2.png)
 
-Materialien zum [Physical Computing Workshop 2017](http://www.deutsches-museum.de/bonn/information/fuer-kinder-und-schulen/die-kleine-eule-pfiffikus/workshops/der-heisse-draht/) im Deutschen Museum in Bonn.
+OER-Lehrmaterialien für Calliope Mini und BBC micro:bit zum [Physical Computing Workshop 2017](http://www.deutsches-museum.de/bonn/information/fuer-kinder-und-schulen/die-kleine-eule-pfiffikus/workshops/der-heisse-draht/) im Deutschen Museum in Bonn.
 
 ## Entwicklungsstufen des MicroPython-Programmes für den Micro:bit
 
